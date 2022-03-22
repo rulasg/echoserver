@@ -12,7 +12,10 @@ app.MapGet("/", async context => {
             datetime = DateTime.Now,
             env = Environment.GetEnvironmentVariable("env"),
             localhost = Environment.MachineName,
-            architecture = System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString(),
+            OSDescription = System.Runtime.InteropServices.RuntimeInformation.OSDescription.ToString(),
+            OSArchitecture = System.Runtime.InteropServices.RuntimeInformation.OSArchitecture.ToString(),
+            ProcessArchitecture = System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString(),
+            RuntimeIdentifier = System.Runtime.InteropServices.RuntimeInformation.RuntimeIdentifier.ToString(),
             requestHost = context.Request.Host.Value
         };
 
