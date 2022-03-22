@@ -1,0 +1,38 @@
+# work in progress
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echoserver
+  namespace: echoserver
+  labels:
+    app: echoserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echoserver
+  template:
+    metadata:
+      labels:
+        app: echoserver
+        tier: frontend
+    spec:
+      containers:
+      - name: echoserver
+        image: rulasg/echoserver:arm64
+        ports:
+        - name: serviceport
+          containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /healthcheck
+            port: serviceport
+        startupProbe:
+          httpGet:
+            path: /healthcheck
+            port: serviceport
+          failureThreshold: 5
+          periodSeconds: 10
+
+        
+         
