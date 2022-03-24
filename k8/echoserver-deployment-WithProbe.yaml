@@ -23,6 +23,16 @@ spec:
         ports:
         - name: serviceport
           containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /healthcheck
+            port: serviceport
+        startupProbe:
+          httpGet:
+            path: /healthcheck
+            port: serviceport
+          failureThreshold: 5
+          periodSeconds: 10
 
         
          
