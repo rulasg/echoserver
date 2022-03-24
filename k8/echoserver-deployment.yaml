@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: echoserver
-        image: rulasg/echoserver:arm64
+        image: rulasg/echoserver
         ports:
         - name: serviceport
           containerPort: 80
